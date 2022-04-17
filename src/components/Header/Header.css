@@ -1,0 +1,106 @@
+/* ---------------------------------------------------- */
+/* Header Section */
+/* ---------------------------------------------------- */
+
+/* headings */
+
+h1, 
+h2, 
+h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+header {
+    background-color: #0071dc;
+    width: 100%;
+}
+
+header h1 {
+    color: #ffffff;
+}
+
+nav {
+    display: flex;
+}
+
+.logo {
+    height: 50px;
+    margin-top: 10px;
+}
+
+.main-nav{
+    list-style: none;
+    display: flex;
+    flex: 1;
+    margin-top: 20px;
+}
+
+
+.main-nav li{
+    margin-left: 40px;
+}
+
+.main-nav li:nth-child(3){
+    flex: 1;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+    padding: 8px 0;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.25s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #004f9a
+}
+
+.main-nav li:last-of-type a {
+    font-size: 70%;
+    border: 1px solid #004f9a;
+    border-radius: 100px;
+    padding: 10px;
+    color: #ffffff;
+}
+
+.main-nav li:last-of-type a:hover {
+    color: #ffffff;
+    background-color: #004f9a;
+    border: 1px solid #004f9a;
+}
+
+.search-input {
+    width: 100%;
+    background: transparent;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding: 10px;
+    margin-top: -10px;
+    color: #555555;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+::placeholder {
+    color: #555555;
+    opacity: 1;
+}
+
+/* ---------------------------------------------------- */
+/* location Section */
+/* ---------------------------------------------------- */
+.location {
+    background-color: #004f9a;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+
