@@ -1,20 +1,21 @@
 import React from 'react'
 import './Header.css'
 import {FaHome, FaMapMarkerAlt} from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <div>
         <header className='p-1'>
             <nav>
-                <h1 className="logo text-2xl font-bold">ShopMart.</h1>
+                <h1 className="logo text-2xl font-bold"> <Link to="/home">ShopMart.</Link></h1>
                 <ul className="main-nav">
                     <li><a href="#Departments">Departments</a></li>
                     <li><a href="#Services">Services</a></li>
                     <li><input type="text" placeholder="&#128269; Search everything at Shopmart online and in store" class="search-input"/></li>
                     <li><a href="#MyItems">My Items</a></li>
-                    <li><a href="#SignIn">Sign in</a></li>
-                    <li><a href="#SignUp">Sign Up</a></li>
+                    <li><Link to="/signin">Sign in</Link></li>
+                    <li><Link to="/signup">Sign Up</Link></li>
                 </ul>
             </nav>
         </header>

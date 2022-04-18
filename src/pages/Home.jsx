@@ -9,7 +9,7 @@ import HealthFeaturedProducts from "../components/FeaturedHomePage/HealthProduct
 const Home = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <Topdeals />
       <GoodDeals />
       <DealsForYou />
