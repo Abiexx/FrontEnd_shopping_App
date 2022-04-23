@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import authService from "../services/authService";
@@ -6,26 +7,40 @@ import authService from "../services/authService";
 const SignIn = () => {
     const { setAuth } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const signInForm = useRef();
+    //const location = useLocation();
+    //const from = location.state?.from?.pathname || "/";
 
-    function doAuthenticate(event) {
+    function handleSignIn(event) {
         event.preventDefault();
-        try {
-            authService.login()
-        }
-        catch(error) {
-            console.log(error.message);
+        const formData = signinForm.current;
+
+        const loginDetails = {
+            username: formData['username'].value,
+            password: formData['password'].value
         }
 
-        const userType = 'ADMIN';
+        authService.login(loginDetails).then((response) => {
+            const token = response.data.access_token
+            const userclaims = jwt_decode(token)
+            localStorage.setItem('access_token', response.data.access_token)
+            localStorage.setItem('refresh_token', response.data.refresh_token)
+            localStorage.setItem('role', userclaims.roles[0])
+            localStorage.setItem('username', userclaims.sub)
 
-        if (userType === 'ADMIN')
-            navigate("/dash/admin")
-        if (userType === 'BUYER')
-            navigate("/dash/buyer")
-        if (userType === 'SELLER')
-            navigate("/dash/seller")
+            formData.reset();
+            navigate("/")
+        })
+        .catch((error) => console.log(error))
+
+        // const userType = 'ADMIN';
+
+        // if (userType === 'ADMIN')
+        //     navigate("/dash/admin")
+        // if (userType === 'BUYER')
+        //     navigate("/dash/buyer")
+        // if (userType === 'SELLER')
+        //     navigate("/dash/seller")
     }
 
     return (
@@ -36,12 +51,15 @@ const SignIn = () => {
                 </div>
                 <div className="flex flex-wrap mx-3 mb-6">
                     <div className="w-full px-3 mb-4">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        <label 
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" 
+                            htmlFor="uname">
                             Username
                         </label>
                         <input
                             className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name"
+                            id="uname"
+                            name="username"
                             type="text"
                             placeholder="user123" />
                         {/* <p className="text-red-500 text-xs italic">
@@ -61,18 +79,21 @@ const SignIn = () => {
                 </div>
                 <div className="flex flex-wrap mx-3 mb-5">
                     <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                        <label 
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" 
+                            htmlFor="pword">
                             Password
                         </label>
                         <input 
                             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                            id="grid-password" 
+                            id="pword" 
+                            name="password"
                             type="password" />
                     </div>
                 </div>
                 <div className="flex flex-wrap mx-3">
                     <div className="w-full px-3">
-                        <button onClick={doAuthenticate} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        <button onClick={handleSignIn} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                             Sign In
                         </button>
                     </div>
