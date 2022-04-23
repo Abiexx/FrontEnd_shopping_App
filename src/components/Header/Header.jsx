@@ -12,14 +12,14 @@ const Header = () => {
                 <ul className="main-nav">
                     <li><a href="#Departments">Departments</a></li>
                     <li><a href="#Services">Services</a></li>
-                    <li><input type="text" placeholder="&#128269; Search everything at Shopmart online and in store" class="search-input"/></li>
+                    <li><input type="text" placeholder="&#128269; Search everything at Shopmart online and in store" className="search-input"/></li>
                     <li><a href="#MyItems">My Items</a></li>
                     <li><Link to="/signin">Sign in</Link></li>
                     <li><Link to="/signup">Sign Up</Link></li>
                 </ul>
             </nav>
         </header>
-        <div class="location">
+        <div className="location">
             <span className='flex'><FaHome />Fairfield Supercenter | <FaMapMarkerAlt /> Fairfield 52557</span>
         </div>
     </div>

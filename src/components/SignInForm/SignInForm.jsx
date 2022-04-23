@@ -1,5 +1,19 @@
+import { useNavigate } from "react-router-dom"
 
 const SignInForm = () => {
+    const navigate = useNavigate();
+
+    function doAuthenticate() {
+        const userType = 'ADMIN';
+
+        if (userType === 'ADMIN')
+            navigate("/dash/admin")
+        if (userType === 'BUYER')
+            navigate("/dash/buyer")
+        if (userType === 'SELLER')
+            navigate("/dash/seller")
+    }
+
     return (
         <form className="w-full max-w-lg">
             <div className="flex flex-wrap mx-6 mb-4">
@@ -19,7 +33,7 @@ const SignInForm = () => {
                         Please fill out this field.
                     </p> */}
                 </div>
-                <div className="w-full md:w-1/2 px-3">
+                {/* <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Email
                     </label>
@@ -28,7 +42,7 @@ const SignInForm = () => {
                         id="grid-last-name"
                         type="text"
                         placeholder="user@domain.com" />
-                </div>
+                </div> */}
             </div>
             <div className="flex flex-wrap mx-3 mb-5">
                 <div className="w-full px-3">
@@ -43,7 +57,7 @@ const SignInForm = () => {
             </div>
             <div className="flex flex-wrap mx-3">
                 <div className="w-full px-3">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <button onClick={doAuthenticate} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                         Sign In
                     </button>
                 </div>
