@@ -9,7 +9,7 @@ import SignUp from './pages/Signup';
 import AdminDash from './pages/AdminDash';
 import BuyerDash from './pages/BuyerDash';
 import SellerDash from './pages/SellerDash';
-import RequireAuth from './components/RequireAuth/RequireAuth';
+//import RequireAuth from './components/RequireAuth/RequireAuth';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,13 +21,13 @@ root.render(
           <Route path='home' element={<Home />} />
           <Route path='signin' element={<SignIn />} />
           <Route path='signup' element={<SignUp />} />
-          <Route element={<RequireAuth />}>
+          
             <Route path="dash">
               <Route path="admin" element={<AdminDash />} />
               <Route path="buyer" element={<BuyerDash />} />
               <Route path="seller" element={<SellerDash />} />
             </Route>
-          </Route>
+          
           <Route path="*" element={<main><p className='p-3'>That Page Does Not Exist!</p></main>} />
         </Route>
         

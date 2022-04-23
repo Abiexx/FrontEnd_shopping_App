@@ -1,37 +1,27 @@
-import axios from "axios";
 import { useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import authService from "../services/authService";
+//import authService from "../services/authService";
+//import jwt_decode from "jwt-decode";
+import { useAuth } from "../store/AuthContext";
 
 const SignIn = () => {
-    const { setAuth } = useAuth();
     const navigate = useNavigate();
     const signInForm = useRef();
+    const {currentUser, signIn} = useAuth();
     //const location = useLocation();
     //const from = location.state?.from?.pathname || "/";
 
     function handleSignIn(event) {
         event.preventDefault();
-        const formData = signinForm.current;
+        const formData = signInForm.current;
 
         const loginDetails = {
             username: formData['username'].value,
             password: formData['password'].value
         }
 
-        authService.login(loginDetails).then((response) => {
-            const token = response.data.access_token
-            const userclaims = jwt_decode(token)
-            localStorage.setItem('access_token', response.data.access_token)
-            localStorage.setItem('refresh_token', response.data.refresh_token)
-            localStorage.setItem('role', userclaims.roles[0])
-            localStorage.setItem('username', userclaims.sub)
-
-            formData.reset();
-            navigate("/")
-        })
-        .catch((error) => console.log(error))
+        signIn(loginDetails);
+        console.log(currentUser);
 
         // const userType = 'ADMIN';
 
@@ -45,7 +35,7 @@ const SignIn = () => {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <form className="w-full max-w-lg">
+            <form ref={signInForm} className="w-full max-w-lg">
                 <div className="flex flex-wrap mx-6 mb-4">
                     <h1 className="text-xl font-bold">Enter Your Credentials</h1>
                 </div>
@@ -62,20 +52,7 @@ const SignIn = () => {
                             name="username"
                             type="text"
                             placeholder="user123" />
-                        {/* <p className="text-red-500 text-xs italic">
-                            Please fill out this field.
-                        </p> */}
                     </div>
-                    {/* <div className="w-full md:w-1/2 px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                            Email
-                        </label>
-                        <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-last-name"
-                            type="text"
-                            placeholder="user@domain.com" />
-                    </div> */}
                 </div>
                 <div className="flex flex-wrap mx-3 mb-5">
                     <div className="w-full px-3">
