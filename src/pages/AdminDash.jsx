@@ -21,7 +21,7 @@ const AdminDash = (props) => {
     }, [])
 
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <section className="mx-3 mb-6">
                 <h3 className="text-xl font-bold text-center">Sellers to be Approved</h3>
                 <div className="flex justify-center">
@@ -29,7 +29,7 @@ const AdminDash = (props) => {
                         {sellers.map((seller) => {
                             return (
                                 <li key={seller.user_id} className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
-                                    <span className="mr-3">{seller.f_name} {seller.l_name}</span>
+                                    <span className="mr-3">{seller.user_name}</span>
                                     <button className="inline-block px-6 py-2 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Approve</button>
                                 </li>
                             )
@@ -44,7 +44,7 @@ const AdminDash = (props) => {
                         {buyers.map((buyer) => {
                             return (
                                 <li key={buyer.user_id} className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
-                                    <span className="mr-3">{buyer.f_name} {buyer.l_name}</span>
+                                    <span className="mr-3">{buyer.user_name}</span>
                                     <button className="inline-block px-6 py-2 border-2 border-green-500 text-green-500 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">Approve</button>
                                 </li>
                             )

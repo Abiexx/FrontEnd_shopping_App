@@ -20,7 +20,10 @@ export function AuthProvider({ children }) {
     }
 
     function signUp(userDetails) {
-        
+        authService.signUp(userDetails, (user) => {
+            setCurrentUser(user);
+            navigate('/');
+        })
     }
 
     function signOut() {
