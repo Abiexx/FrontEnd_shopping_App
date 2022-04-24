@@ -1,11 +1,9 @@
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 //import authService from "../services/authService";
 //import jwt_decode from "jwt-decode";
 import { useAuth } from "../store/AuthContext";
 
 const SignIn = () => {
-    const navigate = useNavigate();
     const signInForm = useRef();
     const {currentUser, signIn} = useAuth();
 
