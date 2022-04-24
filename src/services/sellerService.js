@@ -10,7 +10,6 @@ const authHeader = {
 
 const sellerService = {
     getAllSellers(token) {
-        console.log('token: ', token)
         authHeader.headers['Authorization'] = `Bearer ${token}`;
         return axios.get(sellersApi, authHeader);
     },

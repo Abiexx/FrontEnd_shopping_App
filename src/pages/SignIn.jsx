@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //import authService from "../services/authService";
 //import jwt_decode from "jwt-decode";
 import { useAuth } from "../store/AuthContext";
@@ -8,8 +8,6 @@ const SignIn = () => {
     const navigate = useNavigate();
     const signInForm = useRef();
     const {currentUser, signIn} = useAuth();
-    //const location = useLocation();
-    //const from = location.state?.from?.pathname || "/";
 
     function handleSignIn(event) {
         event.preventDefault();
@@ -21,16 +19,6 @@ const SignIn = () => {
         }
 
         signIn(loginDetails);
-        console.log(currentUser);
-
-        // const userType = 'ADMIN';
-
-        // if (userType === 'ADMIN')
-        //     navigate("/dash/admin")
-        // if (userType === 'BUYER')
-        //     navigate("/dash/buyer")
-        // if (userType === 'SELLER')
-        //     navigate("/dash/seller")
     }
 
     return (
