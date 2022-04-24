@@ -9,6 +9,7 @@ const Home = () => {
     <div className="flex flex-col min-h-screen">
       <Topdeals />
       <GoodDeals />
+      
       <DealsForYou />
       <HealthFeaturedProducts />
     </div>
