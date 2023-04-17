@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
         <div className="row">
             <p> 
-                &copy; Copyright 2022 Shopmart<br/>
+                &copy; Copyright 2022 Abiel<br/>
                 All rights reserved. &nbsp; <a href="#Privacy">Privacy Policy</a> • <a href="#Terms">Terms of Use</a>
             </p>
         </div>

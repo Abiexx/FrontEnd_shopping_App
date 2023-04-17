@@ -1,5 +1,5 @@
 import React from 'react'
-import health1 from '../../../assets/img/health1.jpg'
+import health1 from '../../../assets/img/Agor.jpg'
 import health2 from '../../../assets/img/health2.jpg'
 
 const HealthFeaturedProducts = () => {
@@ -10,7 +10,7 @@ const HealthFeaturedProducts = () => {
             <div className="grid grid-cols-2 gap-2 text-center mb-4">
                 <div className="electronics">
                     <img src={health1} alt="electronics"/>
-                    <span>At home COVID-19 tests</span>
+                    <span>Promote Hair Growth</span>
                 </div>
                 <div className="toys">
                     <img src={health2} alt="toys"/>

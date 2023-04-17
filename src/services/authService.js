@@ -27,6 +27,7 @@ const authService = {
     },
 
     signUp(userDetails, callback) {
+        console.log(userDetails,"---------");
         axios.post(registerUrl, userDetails).then((response) => {
             const token = response.data.access_token
             const userclaims = jwt_decode(token)

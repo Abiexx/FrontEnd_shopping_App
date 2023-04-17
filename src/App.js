@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { AppContext } from "./components/store/AppContext";
 import { AuthProvider } from "./store/AuthContext";
+import ProductList from "./components/Products/productList";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -15,6 +16,7 @@ function App() {
         <Header />
           <Outlet />
           <Footer />
+          <ProductList/>
       </div>
     </AuthProvider>
     // <AppContext.Provider value={{user, setUser, role, setRole}}>

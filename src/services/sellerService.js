@@ -15,5 +15,4 @@ const sellerService = {
     },
 
 }
-
 export default sellerService;

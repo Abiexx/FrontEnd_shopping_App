@@ -12,7 +12,7 @@ h3 {
 }
 
 header {
-    background-color: #0071dc;
+    background-color: #053365;
     width: 100%;
 }
 
@@ -80,7 +80,7 @@ nav {
     background: transparent;
     background-color: #ffffff;
     border: 1px solid #ffffff;
-    border-radius: 50px;
+    border-radius: 10px;
     padding: 10px;
     margin-top: -10px;
     color: #555555;
@@ -97,7 +97,7 @@ nav {
 /* location Section */
 /* ---------------------------------------------------- */
 .location {
-    background-color: #004f9a;
+    background-color: #64696e;
     color: #ffffff;
     font-size: 16px;
     padding: 5px;

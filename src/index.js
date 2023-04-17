@@ -10,7 +10,7 @@ import AdminDash from './pages/AdminDash';
 import BuyerDash from './pages/BuyerDash';
 import SellerDash from './pages/SellerDash';
 //import RequireAuth from './components/RequireAuth/RequireAuth';
-
+import Products from './components/Products/Products';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -21,7 +21,7 @@ root.render(
           <Route path='home' element={<Home />} />
           <Route path='signin' element={<SignIn />} />
           <Route path='signup' element={<SignUp />} />
-          
+          <Route path="/products" element={<Products/>} /> 
             <Route path="dash">
               <Route path="admin" element={<AdminDash />} />
               <Route path="buyer" element={<BuyerDash />} />
