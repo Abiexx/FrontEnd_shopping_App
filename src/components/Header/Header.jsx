@@ -4,12 +4,12 @@ import {FaHome, FaMapMarkerAlt, FaShoppingCart, FaUser} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppContext } from '../store/AppContext'
 import { useAuth } from '../../store/AuthContext'
-import Products from '../Products/Products';
+
 const Header = () => {
 
     //const {user, setUser, role, setRole} = useContext(AppContext);
     const {currentUser, signIn, signUp, signOut} = useAuth();
-    
+   
     const navigate = useNavigate();
 
 
@@ -26,8 +26,14 @@ const Header = () => {
     }
     const handleProductClick = () => {
         console.log("===== products clicked");
-       navigate('/Products');
+       navigate('/Products' );
       }
+
+      const handleSignUpClick = (e) => {
+        e.preventDefault();
+        console.log("===== sign up clicked");
+        navigate('/select-user-roles');
+        }
       
   return (
     <div>
@@ -39,9 +45,12 @@ const Header = () => {
 
                     <li></li>
                     <li><input type="text" placeholder="&#128269; Search at Online Shopping Cart " className="search-input"/></li>
-                    {currentUser ? (<li><a href="#MyItems" className='flex items-center'><FaShoppingCart className='text-xl'/></a></li>) : (<li><a href="#MyItems">My Items</a></li>)}
-                    {currentUser ? (<li><Link to={`/dash/${currentUser.role.toLowerCase()}`} className='flex items-center'><FaUser className='mr-2'/><span className='capitalize text-sm'>{currentUser.username}</span></Link></li>) : (<li><Link to="/signin">Sign in</Link></li>)}
-                    {currentUser ? (<li><button onClick={signoutHandler} className='inline-block px-6 py-2.5 bg-transparent text-white font-medium text-xs leading-tight uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200'>Signout</button></li>) : (<li><Link to="/signup">Sign Up</Link></li>)}
+                    {currentUser ? (<li><a href="#MyItems" className='flex items-center'><FaShoppingCart className='text-xl'/></a></li>) 
+                                    : (<li><a href="#MyItems">My Items</a></li>)}
+                    {currentUser ? (<li><Link to={`/dash/${currentUser.role.toLowerCase()}`} className='flex items-center'><FaUser className='mr-2'/><span className='capitalize text-sm'>{currentUser.username}</span></Link></li>) 
+                                    : (<li><Link to="/signin">Sign in</Link></li>)}
+                    {currentUser ? (<li><button onClick={signoutHandler} className='inline-block px-6 py-2.5 bg-transparent text-white font-medium text-xs leading-tight uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200'>Signout</button></li>) 
+                                    : (<li><a href="/signup" onClick={handleSignUpClick} >Sign-Up</a></li>)}
                 </ul>
             </nav>
         </header>
@@ -49,7 +58,7 @@ const Header = () => {
             <span className='flex'><FaHome />Fairfield WebShop | <FaMapMarkerAlt /> Fairfield 52557</span>
         </div>
     </div>
-  )
+ )
 }
 
 export default Header

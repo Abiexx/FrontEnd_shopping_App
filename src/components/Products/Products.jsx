@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductDetails from './ProductDetails';
 import './Products.css';
-import brand from '../../assets/img/brand2.jpg'
+import { useAuth } from '../../store/AuthContext';
+import productService from '../../services/productService';
 
 const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [products, setProducts] = useState([]);
+ 
+  const {currentUser} = useAuth();
 
-  const products = [
-    { name: 'Product 1', description: 'Description 1', price: '$10', imageUrl: '/assets/img/brand2.jpg' },
-    { name: 'Product 2', description: 'Description 2', price: '$20', imageUrl: '/assets/img/lambo.jpg' },
-    { name: 'Product 3', description: 'Description 3', price: '$30', imageUrl: '/assets/img/lambo.jpg' },
-    { name: 'Product 4', description: 'Description 4', price: '$40', imageUrl: '/assets/img/lambo.jpg' },
-    // { name: 'Product 3', description: 'Description 3', price: '$30', imageUrl: '/images/lambo.jpg' },
-    // { name: 'Product 4', description: 'Description 4', price: '$40', imageUrl: '/images/lambo.jpg' },
-    // { name: 'Product 5', description: 'Description 5', price: '$50', imageUrl: '/images/lambo.jpg' },
-    // { name: 'Product 6', description: 'Description 6', price: '$60', imageUrl: '/images/lambo.jpg' },
- ];
-
+  useEffect(() => {
+    productService.getAllProducts(currentUser.accessToken)
+      .then((res) => {
+        setProducts(res.data);
+      }).catch((err) => console.log(err.message));
+  }, []);
+  
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
@@ -26,22 +26,27 @@ const Products = () => {
   }
 
   return (
+    
     <div className="container">
       <h1 className="text-center mb-5">Products</h1>
       <div className="row">
         {products.map((product) => (
-          <div key={product.name} className="col-md-4 mb-4">
+          <div key={product.product_name} className="col-md-4 mb-4">
             <div className="card h-100">
+             
               <img
-                src='./assets/img/lambo.jpg'
+                src={product.imageUrl}
+                alt="Product Image"
                 className="card-img-top"
-                alt={product.name}
+                style={{ height: '200px', objectFit: 'cover' }}
                 onClick={() => handleProductClick(product)}
-              />
+                />
+<img src={product.imageUrl} alt="Product Image" style={{ height: '200px', objectFit: 'cover' }} onClick={() => handleProductClick(product)} />
+            
               <div className="card-body">
-                <h3 className="card-title">{product.name}</h3>
-                <p className="card-text">{product.description}</p>
-                <p className="card-text">{product.price}</p>
+                <h3 className="card-title">{product.product_name}</h3>
+                <p className="card-text">{product.product_description}</p>
+                <p className="card-text">{product.product_price}</p>
               </div>
             </div>
           </div>
@@ -50,4 +55,5 @@ const Products = () => {
     </div>
   );
 };
+
 export default Products;

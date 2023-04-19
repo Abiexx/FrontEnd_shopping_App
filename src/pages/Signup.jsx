@@ -1,9 +1,16 @@
 import { useRef } from "react";
 import { useAuth } from "../store/AuthContext";
+import { useLocation } from 'react-router-dom';
+
 
 const SignUp = () => {
     const signupForm = useRef();
     const {signUp} = useAuth();
+    const location = useLocation();
+    console.log("===== location", location.state);
+    const {role} = location.state;
+   
+
 
     function handleSignup(event) {
         event.preventDefault();
@@ -18,10 +25,13 @@ const SignUp = () => {
     }
 
     return (
+        role === 'seller' ? <h1>Seller Payment-Sign-Up Form</h1>
+        :
         <div className="flex flex-col min-h-screen">
             <form ref={signupForm} className="w-full max-w-lg row">
                 <div className="flex flex-wrap mx-6 mb-4">
-                    <h1 className="text-xl font-bold">Enter Your Details</h1>
+            
+                    <h1 className="text-xl font-bold">Sign Up As {role}</h1>
                 </div>
                 <div className="flex flex-wrap mx-3 mb-4">
                     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -94,6 +104,7 @@ const SignUp = () => {
                 </div>
             </form>
         </div>
+        
     )
 }
 

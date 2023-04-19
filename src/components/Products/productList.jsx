@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 // import React from 'react';
 import axios from 'axios';
 
-class ProductList extends React.Component {
+class ProductList extends Component {
   state = {
     products: [],
     error: null
@@ -13,7 +13,7 @@ class ProductList extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:8081/api/v1/products')
       .then(response => {
-        this.setState({ products: response.data });
+        this.setState({ products: response.data});
       })
       .catch(error => {
         this.setState({ error });
