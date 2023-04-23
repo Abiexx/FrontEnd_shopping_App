@@ -9,7 +9,7 @@ const ProductDetails = ({ product }) => {
   const handleAddToCartClick = (e) => {
     e.preventDefault();
     setCart((prevCart) => [...prevCart, product]);
-    navigate('/cart', { state: { cart: [...cart, product] } });
+    navigate('/cartPage  ', { state: { cart: [...cart, product] } });
   };
 
   return (
@@ -30,6 +30,7 @@ const ProductDetails = ({ product }) => {
           <h3>Price : </h3>
           <p> $ {product.product_price}</p>
           <FaShoppingCart className="text-xl" />
+          
           <button className="btn btn-primary btn-amazon" onClick={handleAddToCartClick}>
             Add to cart
           </button>

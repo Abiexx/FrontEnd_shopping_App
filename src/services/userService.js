@@ -11,7 +11,7 @@ const saveUser = (userData) => axios.post(`${usersApi}/addUser`, userData);
 
 const deleteUserById = (userId) => axios.delete(`${usersApi}/${userId}`);
 
-const registerUserwithRole =(userData,role) => {axios.post(`${usersApi}/addUser/${role}`, userData);console.log("jjjjjj",userData);}
+const registerUserwithRole =(userData,role) => {axios.post(`${usersApi}/addUser/${role}`, userData);console.log("jjjjjj",userData, role);}
 
 
 

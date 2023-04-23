@@ -14,6 +14,7 @@ export function AuthProvider({ children }) {
 
     function signIn(userDetails) {
         authService.signIn(userDetails, (user) => {
+            console.log("inside authcontext" + user);
             setCurrentUser(user);
             navigate('/');
         })

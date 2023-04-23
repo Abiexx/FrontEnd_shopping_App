@@ -5,7 +5,8 @@ import { useAuth } from "../store/AuthContext";
 
 const SignIn = () => {
     const signInForm = useRef();
-    const {currentUser, signIn} = useAuth();
+   const {currentUser, signIn} = useAuth();
+console.log("current user in sign in form",currentUser);
 
     function handleSignIn(event) {
         event.preventDefault();

@@ -20,7 +20,7 @@ function SelectUserRoles() {
       return;
     } else
     console.log('Selected role:', selectedRole);
-    navigate(`/checkoutform`, { state: { role: selectedRole } });
+    navigate(`/paymentForm`, { state: { role: selectedRole } });
 
   };
 

@@ -12,12 +12,14 @@ import SellerDash from './pages/SellerDash';
 //import RequireAuth from './components/RequireAuth/RequireAuth';
 import Products from './components/Products/Products';
 import SelectUserRoles from './pages/SelectedUserRoles';
-import CheckoutForm from "./CheckoutForm/CheckoutForm";
+
 
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import Cart from './components/ShoppingCart/Cart';
 import AddProductForm from './components/ProductForm/addProductForm';
+import CartPage from './components/ShoppingCart/CartPage';
+import PaymentForm from './PaymentForm/PaymentForm';
 
 
 
@@ -36,15 +38,14 @@ root.render(
           <Route path="/products" element={<Products/>} />
           <Route path='/addProductForm' element={<AddProductForm/>}/>
           <Route path='/cart' element={<Cart/>}/>
+          <Route path='/cartPage' element={<CartPage/>}/>
             <Route path="dash">
               <Route path="admin" element={<AdminDash />} />
               <Route path="buyer" element={<BuyerDash />} />
               <Route path="seller" element={<SellerDash />} />
             </Route>
             <Route path="/select-user-roles" element={<SelectUserRoles/>}/>
-          <Route path='/checkoutform' element={   <Elements stripe={stripePromise}>
-        <CheckoutForm />
-      </Elements>} />
+          <Route path='/paymentForm' element={   <Elements stripe={stripePromise}> <PaymentForm /> </Elements>} />
           <Route path="*" element={<main><p className='p-3'>That Page Does Not Exist!</p></main>} />
         </Route>
         

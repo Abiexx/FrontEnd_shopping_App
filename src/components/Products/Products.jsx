@@ -29,8 +29,9 @@ const Products = () => {
   }
 
   return (
-    <div className="container">
+    <>
       <h1 className="text-center mb-5">Products</h1>
+    <div className="container">
       {products.map((product) => (
         <div key={product.product_name} className="card">
           <img
@@ -47,6 +48,7 @@ const Products = () => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 

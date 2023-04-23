@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../store/AuthContext";
 import { useLocation } from 'react-router-dom';
-import userService from "../services/apiService";
+import userService from "../services/userService";
 
 const SignUp = () => {
   const { signUp } = useAuth();
@@ -31,10 +31,10 @@ const SignUp = () => {
     userService.registerUserwithRole(user, role)
       .then((res) => {
         console.log("sign up add-Role-To-Users ", res.data);
-        signUp(user);
+      //   // signUp(user);
       })
-      .catch((err) => console.log(err.message));
-  };
+      .catch((err) => console.log(err.message,"erorrrrrrrrrrr"));
+  ;
 
   return (
     <div className="flex flex-col min-h-screen">
