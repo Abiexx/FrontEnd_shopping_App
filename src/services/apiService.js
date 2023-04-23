@@ -1,20 +1,27 @@
 import axios from "axios";
 
 const usersApi = 'http://localhost:8080/api/v1/users';
+// const rolesApi = 'http://localhost:8080/api/v1/roles';
 
 const getUsers = () => axios.get(`${usersApi}`);
 
 const getUserById = (userId) => axios.get(`${usersApi}/${userId}`);
 
-const saveUser = (userData) => axios.post(`${usersApi}`, userData);
+const saveUser = (userData) => axios.post(`${usersApi}/addUser`, userData);
 
 const deleteUserById = (userId) => axios.delete(`${usersApi}/${userId}`);
 
-const apiService = {
+const registerUserwithRole =(userData,role) => {axios.post(`${usersApi}/addUser/${role}`, userData);console.log("jjjjjj",userData);}
+
+
+
+
+const userService = {
     getUsers, 
     getUserById, 
     deleteUserById, 
-    saveUser
+    saveUser,
+    registerUserwithRole
 };
 
-export default apiService;
+export default userService;

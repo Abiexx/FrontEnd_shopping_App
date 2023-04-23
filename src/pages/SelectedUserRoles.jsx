@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function SelectUserRoles() {
-
-  console.log('SelectUserRoles');
   const [selectedRole, setSelectedRole] = useState('');
     const navigate = useNavigate();
 
@@ -16,9 +14,13 @@ function SelectUserRoles() {
 
   const handleContinueClick = () => {
     // TODO: handle continue button click
-    
+    if (selectedRole === 'BUYER') {
+      console.log('Selected role:', selectedRole);
+      navigate(`/signup`, { state: { role: selectedRole } });
+      return;
+    } else
     console.log('Selected role:', selectedRole);
-    navigate(`/signup`, { state: { role: selectedRole } });
+    navigate(`/checkoutform`, { state: { role: selectedRole } });
 
   };
 
@@ -32,10 +34,10 @@ function SelectUserRoles() {
               <Form.Check
                 type="radio"
                 id="buyer-radio"
-                label="Buyer"
-                value="buyer"
-                checked={selectedRole === 'buyer'}
-                onChange={handleRoleChange}
+                label=" BUYER"
+                value="BUYER"
+                checked= {selectedRole === 'BUYER'}
+                onChange= {handleRoleChange}
               />
             </Form.Group>
 
@@ -43,15 +45,15 @@ function SelectUserRoles() {
               <Form.Check
                 type="radio"
                 id="seller-radio"
-                label="Seller"
-                value="seller"
-                checked={selectedRole === 'seller'}
-                onChange={handleRoleChange}
+                label=" SELLER"
+                value="SELLER"
+                checked= {selectedRole === 'SELLER'}
+                onChange= {handleRoleChange}
               />
             </Form.Group>
 
-            <Button variant="primary" onClick={handleContinueClick} disabled={!selectedRole}>
-              Continue
+            <Button variant="primary" onClick = {handleContinueClick} disabled={!selectedRole}>
+              Continue 
             </Button>
           </Form>
         </Col>

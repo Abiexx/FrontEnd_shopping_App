@@ -7,6 +7,7 @@ const registerUrl = 'http://localhost:8080/api/v1/users';
 const authService = {
     signIn(userDetails, callback) {
         axios.post(authUrl, userDetails).then((response) => {
+        console.log(response.data.access_token);
             const token = response.data.access_token
             const userclaims = jwt_decode(token)
             const user = {

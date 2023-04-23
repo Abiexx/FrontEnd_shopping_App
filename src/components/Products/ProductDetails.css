@@ -1,0 +1,17 @@
+.btn-amazon {
+    background-color: #e2e74c;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+  }
+  
+  .btn-amazon:hover {
+    background-color: #6d8210;
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+  }
+  
+  .btn-amazon:focus,
+  .btn-amazon.focus {
+    box-shadow: 0 0 0 0.2rem rgba(240, 193, 75, 0.5);
+  }
+  

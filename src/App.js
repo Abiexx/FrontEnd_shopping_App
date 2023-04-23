@@ -6,7 +6,13 @@ import Header from "./components/Header/Header";
 import { AuthProvider } from "./store/AuthContext";
 // import ProductList from "./components/Products/productList";
 import SelectUserRoles from "./pages/SelectedUserRoles";
+import PaymentForm from "./components/PaymentForm/PaymentForm";
+import CheckoutForm from "./CheckoutForm/CheckoutForm";
 
+// import {Elements} from '@stripe/react-stripe-js';
+// import {loadStripe} from '@stripe/stripe-js';
+
+// const stripePromise = loadStripe('YOUR_PUBLISHABLE_KEY');
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,12 +22,8 @@ function App() {
     <AuthProvider>
       <div>
         <Header />
+    
           <Outlet />
-          <Routes>
-         
-           <Route path="/select-user-roles" element={<SelectUserRoles/>}/>
-
-        </Routes>
           <Footer />
      
           {/* <ProductList/> */}
