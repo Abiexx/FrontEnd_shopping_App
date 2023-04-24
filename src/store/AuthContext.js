@@ -8,14 +8,19 @@ export function useAuth() {
     return useContext(AuthContext)
 }
 
+export function MyCurrentUser({user}) {
+    console.log("inside mycurrentuser --- ",user);
+    return user;
+}
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const navigate = useNavigate();
+    
 
     function signIn(userDetails) {
         authService.signIn(userDetails, (user) => {
-            console.log("inside authcontext" + user);
             setCurrentUser(user);
+            console.log("inside authcontext---- " + currentUser);
             navigate('/');
         })
     }
@@ -24,7 +29,7 @@ export function AuthProvider({ children }) {
         authService.signUp(userDetails, (user) => {
             setCurrentUser(user);
             navigate('/');
-        })
+        })  
     }
 
     function signOut() {

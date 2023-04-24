@@ -31,10 +31,10 @@ const SignUp = () => {
     userService.registerUserwithRole(user, role)
       .then((res) => {
         console.log("sign up add-Role-To-Users ", res.data);
-      //   // signUp(user);
+        signUp(user);
       })
-      .catch((err) => console.log(err.message,"erorrrrrrrrrrr"));
-  ;
+      .catch((err) => console.log(err.message));
+  };
 
   return (
     <div className="flex flex-col min-h-screen">

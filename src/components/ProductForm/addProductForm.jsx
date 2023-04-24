@@ -27,8 +27,9 @@ const AddProductForm = () => {
     };
     
     const handleSubmit = (event) => {
+      console.log("add product clicked");
         event.preventDefault();
-        console.log("on add Prod form submit--- ",product);
+        console.log("on add Prod form submit--- ",product , currentUser.accessToken);
         setProduct(product);
         productService
             .postProduct(currentUser.accessToken, product)
