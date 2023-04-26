@@ -19,6 +19,8 @@ import Cart from './components/ShoppingCart/Cart';
 import AddProductForm from './components/ProductForm/addProductForm';
 import CartPage from './components/ShoppingCart/CartPage';
 import PaymentForm from './components/PaymentForm/PaymentForm';
+import AddressForm from './components/AddressForm/AddressForm';
+import SuccessPage from './components/Orders/SuccessPage';
 // import PaymentForm from './components/PaymentForm/PaymentForm';
 
 
@@ -39,7 +41,10 @@ root.render(
           <Route path='/addProductForm' element={<AddProductForm/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/paymentForm' element={<PaymentForm/>} />
+          <Route path='/address' element= {<AddressForm/>}/>
+          <Route path="/success" element={<SuccessPage/>} />
           <Route path='/cartPage' element={<CartPage/>}/>
+
             <Route path="dash">
               <Route path="admin" element={<AdminDash />} />
               <Route path="buyer" element={<BuyerDash />} />
