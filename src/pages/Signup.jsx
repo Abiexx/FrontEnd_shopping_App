@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "../store/AuthContext";
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import userService from "../services/userService";
 
 const SignUp = () => {
   const { signUp } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [role, setRole] = useState(location.state.role);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -28,12 +29,13 @@ const SignUp = () => {
     const user = { firstName, lastName, email, username, password};
     // const userRoleData = { username, role };
     console.log("sign up user ", user);
+    navigate('/home')
     userService.registerUserwithRole(user, role)
-      .then((res) => {
-        console.log("sign up add-Role-To-Users ", res.data);
-        signUp(user);
-      })
-      .catch((err) => console.log(err.message));
+      // .then((res) => {
+      //   console.log("sign up add-Role-To-Users ");
+      //   signUp(user);
+      // })
+      // .catch((err) => console.log(err.message));
   };
 
   return (
