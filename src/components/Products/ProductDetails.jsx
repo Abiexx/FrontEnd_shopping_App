@@ -8,58 +8,28 @@ const ProductDetails = ({ product }) => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
-console.log("product details: ", product);
-  // const handleAddToCartClick = (e) => {
-  //   e.preventDefault();
-  //   setCart((prevCart) => [...prevCart, product]);
-  //   navigate('/cartPage  ', { state: { cart: [...cart, product] } });
-    
-  //   shoppingCartservice.postCreateShoppingCart(currentUser.accessToken)
-  //   .then((res) => {
-  //     console.log("shopping cart created res: ", res);
-  //   }) .catch((err) => {
-  //     console.log("shopping cart created err: ", err);
-  //   })
-  //   shoppingCartservice.addProductToShoppingCart(currentUser.accessToken, product._id)
-  //   .then((res) => {
-  //     console.log("product added to shopping cart res: ", res);
-  //   }) .catch((err) => {
-  //     console.log("product added to shopping cart err: ", err);
-  //   })
-    
-  // };
-  
+
   const handleAddToCartClick = async (e) => {
     e.preventDefault();
-  
+
     try {
       // Create the shopping cart
       const cart = await shoppingCartservice.postCreateShoppingCart(currentUser.accessToken);
       console.log("shopping cart created res: ", cart);
-  
+
       // Wait for 1 second before adding the product to the cart
       await new Promise(resolve => setTimeout(resolve, 1000));
-  
+
       // Add the product to the cart
       const productAdded = await shoppingCartservice.addProductToShoppingCart(currentUser.accessToken, product.product_id);
       console.log("product added to shopping cart res: ", productAdded);
-  
-      // Update the cart state variable
-      // console.log("cart: ", cart);
-      // const updatedCart = [...cart, product];
-      console.log("updated cart:----- ");
-  
+
       // Navigate to the cart page with the updated cart and product details
-      // navigate('/cartPage', { state: { product, cart: updatedCart } });
-    
       navigate('/cartPage');
     } catch (err) {
       console.log("Error adding product to cart: ", err);
     }
   }
-  
-  
-  
 
   return (
     <div className="container">
@@ -78,11 +48,13 @@ console.log("product details: ", product);
           <p>{product.product_description}</p>
           <h3>Price : </h3>
           <p> $ {product.product_price}</p>
-          <FaShoppingCart className="text-xl" />
-          
-          <button className="btn btn-primary btn-amazon" onClick={handleAddToCartClick}>
-            Add to cart
-          </button>
+         
+          {currentUser.role.toLowerCase() === 'seller' ? null : (
+            <button className="btn btn-primary btn-amazon" onClick={handleAddToCartClick}>
+              <FaShoppingCart className="text-xl" />
+              Add to cart
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import './addProductForm.css';
 const AddProductForm = () => {
   const [product, setProduct] = useState({
     product_name: '',
-    product_price: '',
+    product_price: 0,
     product_description: '',
     imageUrl: '',
   });
@@ -30,11 +30,10 @@ const AddProductForm = () => {
       console.log("add product clicked");
         event.preventDefault();
         console.log("on add Prod form submit--- ",product , currentUser.accessToken);
-        setProduct(product);
+        // setProduct(product);
         productService
-            .postProduct(currentUser.accessToken, product)
+            .postProduct( product, currentUser.accessToken)
             .then((res) => {
-               
                 console.log(res.data);
                 setProduct(res.data);
                 navigate('/Products', product);

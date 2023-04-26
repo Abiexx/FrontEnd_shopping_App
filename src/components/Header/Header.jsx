@@ -38,15 +38,15 @@ const Header = () => {
     setShowDropdown(false);
   };
 
-  const handleAddProductClick = () => {
-    console.log('===== add product clicked');
-    navigate('/addProductForm');
-  };
+  // const handleAddProductClick = () => {
+  //   console.log('===== add product clicked');
+  //   navigate('/addProductForm');
+  // };
 
-  const handleGetMyProductsClick = () => {
-    console.log('===== get my products clicked');
-    navigate('/Products');
-  };
+  // const handleGetMyProductsClick = () => {
+  //   console.log('===== get my products clicked');
+  //   navigate('/products');
+  // };
 
   const handleSignUpClick = (e) => {
     e.preventDefault();
@@ -86,15 +86,16 @@ const Header = () => {
                   {showDropdown && (
                     <ul className='dropdown-menu'>
                       <li>
-                        <a href='#' onClick={handleAddProductClick}>
-                          Add Product
-                        </a>
+                     <Link to='/addProductForm'>Add-Product</Link>
                       </li>
-                      <li>
-                        <a href='#' onClick={handleGetMyProductsClick}>
+                      {/* <li>
+                        <a href='' onClick={handleGetMyProductsClick}>
                           My Products
                         </a>
-                      </li>
+                      </li> */}
+                   <li>
+                      <Link to='/Products'>My-Products</Link>
+                    </li>
                     </ul>
                   )}
                 </div>

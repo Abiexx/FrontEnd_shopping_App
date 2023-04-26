@@ -63,8 +63,7 @@ const PaymentForm= () => {
        cvc: cardData.cvc ,
        buyer_id: 2 ,//hard coded for now
        currency: "USD",
-       type: "card",
-       amount: 500
+       type: "card"
       }
 if(role === "seller"){
      paymentService.postSellerPayment(paymentData)

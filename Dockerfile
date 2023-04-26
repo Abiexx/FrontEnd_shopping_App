@@ -1,25 +1,20 @@
-## STAGE 1: BUILD ##
-FROM node:lts-alpine as build
+# Use the official Node.js image as the base image
+FROM node:alpine
 
-RUN mkdir -p /usr/src/app
+# Set the working directory to the root directory of the frontend app
+WORKDIR /app
 
-WORKDIR /usr/src/app
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
 
-COPY package.json /usr/src/app/package.json
+# Install dependencies
+RUN npm install
 
-RUN yarn install
+# Copy the rest of the frontend app files to the container
+COPY . .
 
-COPY . /usr/src/app
+# Expose the port that the frontend app is running on
+EXPOSE 3000
 
-RUN yarn build 
-
-## STAGE 2: PRODUCTION ##
-
-FROM nginx:1.14.2-alpine
-
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
-
+# Start the frontend app
+CMD ["npm", "start"]
